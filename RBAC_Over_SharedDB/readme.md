@@ -2,7 +2,7 @@ Sharing data in Snowflake is fantastic! Be aware that on the consumer side, defa
 To have more granular permissions we can create a database of views over the share. This StoredProc automates the creation of views over all tables and views in the Shared database, ready for RBAC.
 
 Source Share
-![Source Share](/images/SourceShare.png)
+![Source Share](/RBAC_Over_SharedDB/images/SourceShare.png)
 
 Views Over Share
-![ViewsOverShare](/images/ViewsOverShare.png)
+![ViewsOverShare](/RBAC_Over_SharedDB/images/ViewsOverShare.png)
