@@ -21,4 +21,4 @@ If this is new to you, here's a great guide!
 https://www.serverless.com/blog/serverless-python-packaging/
 
 If you do this, you'll need to uncomment the first line in priceData.py
-# import unzip_requirements # Use this when deploying through Serverless
+`import unzip_requirements # Use this when deploying through Serverless`
