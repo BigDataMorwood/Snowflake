@@ -26,7 +26,7 @@ $$
     //-- CREATE DATABASE --
     //---------------------
     //Create the wrapperDB to hold the objects for RBAC
-    var createDB_query = `create or replace database ${WRAPPERDB};`;
+    var createDB_query = `create database if not exists ${WRAPPERDB};`;
     retVal.Database.push(createDB_query);
     snowflake.execute({sqlText: createDB_query})
     
@@ -49,7 +49,7 @@ $$
 
         while(schemaNames_results.next()) {
             var schemaName = schemaNames_results.getColumnValue(1);
-            var createSchema_query = `create schema ${WRAPPERDB}.${schemaName};`;
+            var createSchema_query = `create schema if not exists ${WRAPPERDB}.${schemaName};`;
 
             retVal.Schemas.push(createSchema_query);
             snowflake.execute({sqlText: createSchema_query});
@@ -86,7 +86,7 @@ $$
             var showViewColumns_results = snowflake.execute({sqlText: showViewColumns_query});
 
             //prepare the CreateView statement
-            var createView_query = `create or replace view ${WRAPPERDB}.${schemaName}.${viewName}
+            var createView_query = `create or replace view ${WRAPPERDB}.${schemaName}.${viewName} copy grants
                                     as
                                     select `;
 
@@ -141,7 +141,7 @@ $$
             var showTableColumns_results = snowflake.execute({sqlText: showTableColumns_query});
 
             //prepare the CreateView statement
-            var createView_query = `create or replace view ${WRAPPERDB}.${schemaName}.vw_${tableName}
+            var createView_query = `create or replace view ${WRAPPERDB}.${schemaName}.vw_${tableName} copy grants
                                     as
                                     select `;
 
